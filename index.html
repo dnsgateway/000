@@ -191,6 +191,18 @@
     .hero-left, .hero-right{flex:1 1 auto}
     h1{font-size:36px}
   }
+  .bottom-nav .tab svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.tab:hover svg {
+  transform: translateY(-2px);
+  color: var(--brand);
+}
+.tab.active svg {
+  color: var(--brand);
+}
 </style>
 </head>
 <body>
