@@ -63,7 +63,7 @@
   .sub{
     color:var(--muted);font-size:18px;line-height:1.6;max-width:52ch;
   }
-  .cta-row{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+  .cta-row{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
   .btn{
     appearance:none;border:none;border-radius:12px;padding:13px 18px;
     font-weight:700;cursor:pointer;transition:.18s transform, .18s box-shadow;
@@ -89,32 +89,58 @@
   }
   .notch{
     position:absolute;left:50%;transform:translateX(-50%);
-    top:0;width:210px;height:28px;background:#000;border-bottom-left-radius:14px;border-bottom-right-radius:14px;z-index:5;
+    top:0;width:210px;height:28px;background:#000;
+    border-bottom-left-radius:14px;border-bottom-right-radius:14px;
+    z-index:5;
   }
+
   .status-row{
-    height:24px;display:flex;align-items:center;justify-content:flex-end;
-    padding:0 12px;font-size:12px;color:#111;gap:10px;background:#f8fafc;
+    position:relative;
+    height:24px;
+    padding:4px 10px 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:11px;
+    color:#020617;
+    background:#f8fafc;
+    z-index:4;
+  }
+  .status-left{
+    font-weight:600;
+    padding-left:4px;
+  }
+  .status-right{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    margin-right:6px;
+  }
+  .status-icon{
+    width:16px;
+    height:16px;
+    display:inline-block;
   }
 
   /* App header */
   .app-topbar{
-    padding:12px 14px 8px;background:#fff;border-bottom:1px solid var(--stroke);
+    padding:10px 14px 8px;background:#fff;border-bottom:1px solid var(--stroke);
     display:flex;align-items:center;gap:10px;
   }
-  .app-title{font-weight:800}
+  .app-title{font-weight:800;font-size:16px}
   .search{
     position:relative;flex:1;
   }
   .search input{
-    width:100%;padding:10px 12px 10px 36px;border-radius:10px;border:1px solid var(--stroke);background:#fff;
-    font-size:14px;
+    width:100%;padding:9px 12px 9px 32px;border-radius:10px;border:1px solid var(--stroke);background:#fff;
+    font-size:13px;
   }
-  .search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);opacity:.6}
+  .search svg{position:absolute;left:8px;top:50%;transform:translateY(-50%);opacity:.6}
 
   /* Chips */
-  .chips{display:flex;gap:8px;padding:10px 14px;background:#fff;border-bottom:1px solid var(--stroke)}
+  .chips{display:flex;gap:8px;padding:8px 14px;background:#fff;border-bottom:1px solid var(--stroke)}
   .chip{
-    padding:8px 12px;border-radius:999px;background:var(--chip);color:#312e81;font-weight:700;font-size:12px;cursor:pointer;border:1px solid transparent;
+    padding:7px 11px;border-radius:999px;background:var(--chip);color:#312e81;font-weight:600;font-size:11px;cursor:pointer;border:1px solid transparent;
   }
   .chip.active{background:#e0e7ff;border-color:#c7d2fe}
 
@@ -130,15 +156,15 @@
   .logo-circle{
     width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:900;
   }
-  .badge{font-size:11px;font-weight:800;color:#065f46;background:#dcfce7;border:1px solid #bbf7d0;border-radius:8px;padding:3px 6px;margin-right:6px}
-  .title{font-weight:800}
-  .desc{color:var(--muted);font-size:13px;margin:.15rem 0 .5rem}
-  .actions{display:flex;gap:8px;flex-wrap:wrap}
+  .badge{font-size:10px;font-weight:800;color:#065f46;background:#dcfce7;border:1px solid #bbf7d0;border-radius:8px;padding:2px 6px;margin-right:6px}
+  .title{font-weight:800;font-size:13px}
+  .desc{color:var(--muted);font-size:12px;margin:.15rem 0 .5rem}
+  .actions{display:flex;gap:6px;flex-wrap:wrap}
   .btn-small{
-    padding:9px 12px;border-radius:10px;border:1px solid var(--stroke);background:#fff;font-weight:700;font-size:13px;cursor:pointer;
+    padding:7px 10px;border-radius:9px;border:1px solid var(--stroke);background:#fff;font-weight:600;font-size:11px;cursor:pointer;
   }
   .btn-small.primary{background:var(--brand);color:#fff;border-color:transparent}
-  .heart{cursor:pointer;opacity:.5}
+  .heart{cursor:pointer;opacity:.4}
   .heart.active{opacity:1;color:#ef4444}
 
   /* Divider above bottom nav */
@@ -148,14 +174,27 @@
 
   /* Bottom navigation */
   .bottom-nav{
-    position:absolute;left:0;right:0;bottom:0;height:64px;background:#fff;border-top:1px solid var(--stroke);
+    position:absolute;left:0;right:0;bottom:0;height:64px;background:#ffffffee;border-top:1px solid var(--stroke);
     display:flex;align-items:center;justify-content:space-around;z-index:3;
+    backdrop-filter:blur(8px);
   }
   .tab{
-    display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;color:var(--muted);font-size:11px;font-weight:700;
+    display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;
+    color:var(--muted);font-size:10px;font-weight:600;
+    padding-top:4px;
   }
-  .tab.active{color:var(--brand)}
-  .tab svg{width:22px;height:22px}
+  .tab svg{
+    width:22px;height:22px;
+    transition:0.2s transform, 0.2s color, 0.2s opacity;
+    opacity:0.7;
+  }
+  .tab.active{
+    color:var(--brand);
+  }
+  .tab.active svg{
+    transform:translateY(-2px);
+    opacity:1;
+  }
 
   /* Modal */
   .modal{
@@ -191,18 +230,6 @@
     .hero-left, .hero-right{flex:1 1 auto}
     h1{font-size:36px}
   }
-  .bottom-nav .tab svg {
-  width: 24px;
-  height: 24px;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-.tab:hover svg {
-  transform: translateY(-2px);
-  color: var(--brand);
-}
-.tab.active svg {
-  color: var(--brand);
-}
 </style>
 </head>
 <body>
@@ -210,7 +237,7 @@
 <header class="site-header" aria-label="Site header">
   <div class="brand" aria-label="Smart Savings Hub">
     <span class="brand-dot" aria-hidden="true"></span>
-    <span>Landing Page</span>
+    <span>Smart Savings Hub</span>
   </div>
   <nav class="nav" aria-label="Primary">
     <a href="#how-it-works">How it works</a>
@@ -235,72 +262,90 @@
     <div class="device" role="img" aria-label="iPhone X mockup showing Smart Savings Hub">
       <div class="device-inner" id="app">
         <div class="notch" aria-hidden="true"></div>
-        <div class="status-row">
-  <span>9:41</span>
-  <svg width="16" height="16" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-    <path d="M2 20h.01M7 20a5 5 0 0 1 10 0M17 20h.01M22 20h.01M12 4v5" />
-  </svg>
-  <svg width="16" height="16" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-    <path d="M2 8.82a13.94 13.94 0 0 1 20 0M6.6 13.4a7.97 7.97 0 0 1 10.8 0M12 20h.01" />
-  </svg>
-  <svg width="20" height="20" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-    <rect x="2" y="7" width="18" height="10" rx="2" ry="2" />
-    <line x1="22" y1="11" x2="22" y2="13" />
-  </svg>
-</div>
 
+        <!-- Modern status bar -->
+        <div class="status-row" aria-hidden="true">
+          <div class="status-left">9:41</div>
+          <div class="status-right">
+            <!-- Signal -->
+            <svg class="status-icon" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="14" width="3" height="6" rx="0.8" fill="#0f172a"/>
+              <rect x="7" y="11" width="3" height="9" rx="0.8" fill="#0f172a"/>
+              <rect x="12" y="8" width="3" height="12" rx="0.8" fill="#0f172a"/>
+              <rect x="17" y="5" width="3" height="15" rx="0.8" fill="#9ca3af"/>
+            </svg>
+            <!-- WiFi -->
+            <svg class="status-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M3 8.5C8.5 3.5 15.5 3.5 21 8.5" stroke="#0f172a" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M6 11c4-3 8-3 12 0" stroke="#0f172a" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M9.5 13.8c1.8-1.4 3.2-1.4 5 0" stroke="#0f172a" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="12" cy="17" r="1.2" fill="#0f172a"/>
+            </svg>
+            <!-- Battery -->
+            <svg class="status-icon" viewBox="0 0 26 24" fill="none">
+              <rect x="3" y="7" width="18" height="10" rx="2" stroke="#0f172a" stroke-width="1.4"/>
+              <rect x="4.7" y="8.6" width="13" height="6.8" rx="1.2" fill="#22c55e"/>
+              <rect x="21" y="10" width="2.4" height="4" rx="0.8" fill="#0f172a"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- App content -->
         <div class="app-topbar">
           <div class="app-title">Deals</div>
           <div class="search" role="search">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="#334155" stroke-width="2" stroke-linecap="round"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M21 21l-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="#334155" stroke-width="2" stroke-linecap="round"/>
+            </svg>
             <input id="searchInput" placeholder="Search offers or brands…" aria-label="Search offers"/>
           </div>
         </div>
 
         <div class="chips" role="tablist" aria-label="Categories">
           <button class="chip active" data-filter="all" role="tab" aria-selected="true">All</button>
-          <button class="chip" data-filter="retail" role="tab" aria-selected="false">Brands</button>
-          <button class="chip" data-filter="travel" role="tab" aria-selected="false">Categories</button>
-          <button class="chip" data-filter="betting" role="tab" aria-selected="false">Local</button>
+          <button class="chip" data-filter="retail" role="tab" aria-selected="false">Retail</button>
+          <button class="chip" data-filter="travel" role="tab" aria-selected="false">Travel</button>
+          <button class="chip" data-filter="betting" role="tab" aria-selected="false">Promos</button>
         </div>
 
         <div class="scroll" id="list" aria-live="polite">
-          <!-- Cards are injected by JS -->
+          <!-- Cards injected by JS -->
         </div>
 
         <!-- Divider above bottom navigation -->
         <div class="divider" aria-hidden="true"></div>
 
-       <nav class="bottom-nav" role="tablist" aria-label="App tabs">
-  <button class="tab active" data-tab="deals" aria-selected="true">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-      <polyline points="9 22 9 12 15 12 15 22"></polyline>
-    </svg>
-    <span>Home</span>
-  </button>
-  <button class="tab" data-tab="favorites" aria-selected="false">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 0 0 0-7.8z"></path>
-    </svg>
-    <span>Favorites</span>
-  </button>
-  <button class="tab" data-tab="explore" aria-selected="false">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="10"></circle>
-      <polygon points="10 8 16 12 10 16 10 8"></polygon>
-    </svg>
-    <span>Explore</span>
-  </button>
-  <button class="tab" data-tab="profile" aria-selected="false">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M20 21v-2a4 4 0 0 0-3-3.87"></path>
-      <path d="M4 21v-2a4 4 0 0 1 3-3.87"></path>
-      <circle cx="12" cy="7" r="4"></circle>
-    </svg>
-    <span>Profile</span>
-  </button>
-</nav>
+        <!-- Modern bottom nav -->
+        <nav class="bottom-nav" role="tablist" aria-label="App tabs">
+          <button class="tab active" data-tab="deals" aria-selected="true">
+            <!-- Compass/Home hybrid icon -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M10 14l1.2-3.2L14.4 9 13.2 12.2 10 14z" fill="currentColor"/>
+            </svg>
+            <span>Offers</span>
+          </button>
+          <button class="tab" data-tab="favorites" aria-selected="false">
+            <!-- Star/heart icon -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 3.5l2 4 4.4.6-3.2 3.1.8 4.4L12 13.9 8 15.6l.8-4.4-3.2-3.1L10 7.5l2-4z"
+                    stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+            </svg>
+            <span>Favorites</span>
+          </button>
+          <button class="tab" data-tab="more" aria-selected="false">
+            <!-- Grid / menu dots icon -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="7" cy="7" r="1.6" fill="currentColor"/>
+              <circle cx="12" cy="7" r="1.6" fill="currentColor"/>
+              <circle cx="17" cy="7" r="1.6" fill="currentColor"/>
+              <circle cx="7" cy="12" r="1.6" fill="currentColor"/>
+              <circle cx="12" cy="12" r="1.6" fill="currentColor"/>
+              <circle cx="17" cy="12" r="1.6" fill="currentColor"/>
+            </svg>
+            <span>More</span>
+          </button>
+        </nav>
       </div>
     </div>
   </div>
@@ -311,7 +356,7 @@
   <h2>How it works</h2>
   <p class="sub">Connect to thousands of brand, travel, and entertainment offers. Save to favorites, get alerts, and redeem with a tap.</p>
   <div class="steps">
-    <div class="step"><strong>1) Discover</strong> Browse Retail, Travel, and Betting promos filtered to your region.</div>
+    <div class="step"><strong>1) Discover</strong> Browse Retail, Travel, and promo offers filtered to your region.</div>
     <div class="step"><strong>2) Favorite</strong> Save deals, compare later, and enable price-drop notifications.</div>
     <div class="step"><strong>3) Redeem</strong> Tap “View Offer” to redeem on partner sites and track savings.</div>
   </div>
@@ -407,7 +452,6 @@
     search: ''
   };
 
-  // --- Helpers --------------------------------------------------------------
   const el = sel => document.querySelector(sel);
   const listEl = el('#list');
   const modal = el('#modal');
@@ -420,7 +464,7 @@
   }
 
   function heart(isActive){
-    return `<svg class="heart ${isActive?'active':''}" viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-label="favorite toggle">
+    return `<svg class="heart ${isActive?'active':''}" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
       <path d="M12 21s-7-4.35-9.33-8.13C.76 10.05 2.02 6.5 5.6 6.07c2.02-.24 3.4.88 4.4 2.06 1-1.18 2.38-2.3 4.4-2.06 3.58.43 4.84 3.98 2.93 6.8C19 16.65 12 21 12 21z"/>
     </svg>`;
   }
@@ -444,17 +488,14 @@
   function render(){
     let data = OFFERS.slice();
 
-    // filter by chip
     if(state.filter !== 'all'){
       data = data.filter(o => o.type === state.filter);
     }
 
-    // tab behavior
     if(state.tab === 'favorites'){
       data = data.filter(o => state.favorites.has(o.id));
     }
 
-    // search
     if(state.search){
       const q = state.search.toLowerCase();
       data = data.filter(o =>
@@ -465,20 +506,23 @@
 
     listEl.innerHTML = data.length
       ? data.map(cardTemplate).join('')
-      : `<div class="card"><div class="logo-circle" style="background:#94a3b8">🔎</div><div><div class="title">No results</div><div class="desc">Try a different filter or keyword.</div></div></div>`;
+      : `<div class="card">
+           <div class="logo-circle" style="background:#94a3b8">🔎</div>
+           <div>
+             <div class="title">No results</div>
+             <div class="desc">Try a different filter or keyword.</div>
+           </div>
+         </div>`;
   }
 
-  // Initial render
   render();
 
-  // --- Event wiring ---------------------------------------------------------
   // Chips
   document.querySelectorAll('.chip').forEach(chip=>{
-    chip.addEventListener('click', e=>{
+    chip.addEventListener('click', ()=>{
       document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
       chip.classList.add('active');
       state.filter = chip.dataset.filter;
-      // reset to Deals tab when switching category
       setTab('deals');
       render();
     });
@@ -492,16 +536,17 @@
       t.classList.toggle('active', active);
       t.setAttribute('aria-selected', active);
     });
-    // Change app topbar title
-    el('.app-title').textContent = name === 'deals' ? 'Deals' : (name === 'favorites' ? 'Favorites' : 'More');
-    render();
+
+    el('.app-title').textContent =
+      name === 'deals' ? 'Deals' :
+      name === 'favorites' ? 'Favorites' : 'More';
+
     if(name === 'more'){
-      // inject simple settings card when on More
       listEl.innerHTML = `
         <div class="card">
           <div class="logo-circle" style="background:#0ea5e9">⚙️</div>
           <div>
-            <div class="title">Settings & Tools</div>
+            <div class="title">Settings &amp; Tools</div>
             <div class="desc">Manage notifications, region filters, and data preferences.</div>
             <div class="actions">
               <button class="btn-small" id="btnRegion">Region: Auto</button>
@@ -510,6 +555,8 @@
             </div>
           </div>
         </div>`;
+    } else {
+      render();
     }
   }
 
@@ -523,15 +570,15 @@
     render();
   });
 
-  // Card actions (event delegation)
+  // Card actions
   listEl.addEventListener('click', e=>{
     const btn = e.target.closest('button');
     if(!btn) return;
     const card = e.target.closest('.card');
     const id = btn.dataset.id || (card && card.dataset.id);
     const offer = OFFERS.find(o=>o.id===id);
-
     const action = btn.dataset.action;
+
     if(action === 'favorite'){
       const isFav = state.favorites.has(id);
       isFav ? state.favorites.delete(id) : state.favorites.add(id);
@@ -550,8 +597,7 @@
 
   // Modal logic
   let modalUrl = '#';
-  function openModal(offer, showDetails){
-    // Age-gate for betting
+  function openModal(offer){
     if(offer && offer.ageGate){
       const ok = confirm('This promotion is for adults in eligible regions. Are you 21+ and in an eligible location?');
       if(!ok) return;
@@ -566,33 +612,40 @@
     modal.classList.add('open');
     modal.setAttribute('aria-hidden','false');
   }
-  el('#closeModal').addEventListener('click', ()=> {
-    modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+
+  el('#closeModal').addEventListener('click', ()=>{
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
   });
-  modal.addEventListener('click', (e)=> {
-    if(e.target === modal){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
+
+  modal.addEventListener('click', e=>{
+    if(e.target === modal){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+    }
   });
-  goOfferBtn.addEventListener('click', ()=> {
+
+  goOfferBtn.addEventListener('click', ()=>{
     alert('This would open: ' + modalUrl + '\n(Linked to partner in production)');
   });
 
   // Get started demo
   el('#getStarted').addEventListener('click', ()=>{
-    // Scroll to phone and highlight a card
     document.querySelector('.device').scrollIntoView({behavior:'smooth', block:'center'});
-    setTimeout(()=> {
+    setTimeout(()=>{
       const first = listEl.querySelector('.card');
       if(first){
         first.style.outline='3px solid var(--brand)';
-        setTimeout(()=>first.style.outline='none', 1200);
+        setTimeout(()=>first.style.outline='none', 1100);
       }
-    }, 600);
+    },600);
   });
 
-  // Keyboard nav quality-of-life
+  // Keyboard close for modal
   document.addEventListener('keydown', e=>{
     if(e.key === 'Escape' && modal.classList.contains('open')){
-      modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
     }
   });
 </script>
